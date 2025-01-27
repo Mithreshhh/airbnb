@@ -1,5 +1,5 @@
 const express = require("express");
-const wrapAsync = require("../utils/wrapAsync");
+const wrapAsync = require("../utils/wrapasync");
 const ExpressError = require("../utils/expressError");
 const Listing = require("../models/Listing");
 const Review = require("../models/reviews");

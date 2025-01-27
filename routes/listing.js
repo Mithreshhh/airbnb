@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = express.Router();
-const wrapAsync = require("../utils/wrapAsync");
+const wrapAsync = require("../utils/wrapasync");
 const listingSchema = require("../schema"); 
 const { isLoggedIn, isOwner } = require("../middleware"); 
 const methodOverride = require("method-override");
