@@ -29,7 +29,7 @@ Router.route("/")
     .post(
         isLoggedIn, 
         upload.single("listing[image]"), 
-        validateListing,
+        
         wrapAsync(ListingController.createListing)
     );
 
@@ -43,7 +43,6 @@ Router.route("/:id")
         isLoggedIn,
         isOwner,
         upload.single("listing[image]"),
-        validateListing,
         wrapAsync(ListingController.updateform)
     )
     .delete(isLoggedIn, isOwner, wrapAsync(ListingController.delete));
