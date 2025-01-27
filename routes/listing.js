@@ -8,9 +8,7 @@ const ListingController = require("../controller/listing.js");
 const multer = require("multer");
 const { storage } = require("../cloudconfig.js");
 const upload = multer({ storage });
-const ExpressError = require("../utils/ExpressError"); 
-
-Router.use(methodOverride("_method"));
+const ExpressError = require("../utils/expressError"); 
 
 // Middleware to validate listing schema
 const validateListing = (req, res, next) => {
@@ -22,7 +20,10 @@ const validateListing = (req, res, next) => {
     next();
 };
 
-// List all listings and create a new listing
+// Static routes first
+Router.use(methodOverride("_method"));
+
+// Index and Create routes
 Router.route("/")
     .get(wrapAsync(ListingController.index))
     .post(
@@ -32,22 +33,22 @@ Router.route("/")
         wrapAsync(ListingController.createListing)
     );
 
-// Show, update, or delete a listing
+// New listing form - MOVED UP before :id routes
+Router.get("/new", isLoggedIn, ListingController.renderNewForm);
+
+// Dynamic :id routes after static routes
 Router.route("/:id")
     .get(wrapAsync(ListingController.showListing))
     .put(
         isLoggedIn,
         isOwner,
         upload.single("listing[image]"),
-        validateListing, // Validate before updating
+        validateListing,
         wrapAsync(ListingController.updateform)
-    ) // Update a listing
-    .delete(isLoggedIn, isOwner, wrapAsync(ListingController.delete)); // Delete a listing
+    )
+    .delete(isLoggedIn, isOwner, wrapAsync(ListingController.delete));
 
-// New listing form
-Router.get("/new", isLoggedIn, ListingController.renderNewForm);
-
-// Edit listing form
+// Edit form route - must come after other :id routes
 Router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(ListingController.renderEditForm));
 
 module.exports = Router;
