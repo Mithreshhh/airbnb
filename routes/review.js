@@ -4,7 +4,7 @@ const ExpressError = require("../utils/expressError");
 const Listing = require("../models/Listing");
 const Review = require("../models/reviews");
 const { isLoggedIn, isReviewAuthor } = require("../middleware");
-const ReviewController=("../controller/review.js")
+const ReviewController=require ("../controller/review.js")
 const Router = express.Router({ mergeParams: true });
 
 const validateReview = (req, res, next) => {
