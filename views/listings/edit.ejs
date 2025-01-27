@@ -1,0 +1,180 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+    <body>
+        <div class="container mt-5">
+            <div class="col-md-8 offset-md-2 p-4 shadow-lg rounded bg-light animate__animated animate__fadeIn">
+                <h3 class="mb-4 text-center text-primary">Edit Your Listing</h3>
+                <form action="/listings/<%= listing._id %>?_method=PUT" method="post" novalidate
+                    class="needs-validation" enctype="multipart/form-data">
+                    <!-- Title -->
+                    <div class="mb-4">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" name="listing[title]" id="title" value="<%= listing.title %>"
+                            class="form-control form-control-lg" placeholder="Enter the title" required>
+                        <div class="invalid-feedback">Please enter a valid title.</div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-4">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="listing[description]" id="description" class="form-control form-control-lg"
+                            rows="3" placeholder="Enter a description" required><%= listing.description %></textarea>
+                        <div class="invalid-feedback">Please enter a description.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="current-image" class="form-label">Current Image</label>
+                        <img src="<%= listing.image.url %>" alt="Current listing image" class="img-fluid rounded shadow-sm mb-3" id="current-image">
+                    </div>
+                    
+                    <!-- Image -->
+                    <div class="mb-4">
+                        <label for="image" class="form-label"> New Image file</label>
+                        <input type="file" name="listing[image]" id="image"
+                            class="form-control form-control-lg" placeholder="Enter the image URL">
+                    </div>
+
+                    <!-- Price -->
+                    <div class="mb-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" name="listing[price]" id="price" value="<%= listing.price %>"
+                            class="form-control form-control-lg" placeholder="Enter the price" required>
+                        <div class="invalid-feedback">Please enter a price.</div>
+                    </div>
+
+                    <!-- Country -->
+                    <div class="mb-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" name="listing[country]" id="country" value="<%= listing.country %>"
+                            class="form-control form-control-lg" placeholder="Enter the country" required>
+                        <div class="invalid-feedback">Please enter a country.</div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mb-4">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" name="listing[location]" id="location" value="<%= listing.location %>"
+                            class="form-control form-control-lg" placeholder="Enter the location" required>
+                        <div class="invalid-feedback">Please enter a location.</div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Update Listing</button>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    <style>
+        /* Page and Container Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Card-like Form Container */
+        .shadow-lg {
+            background-color: #ffffff;
+            border-radius: 10px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        /* Form Inputs */
+        .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            background-color: #f7f9fc;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        /* Submit Button */
+        .btn-primary {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #007bff;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Validation Feedback */
+        .invalid-feedback {
+            font-size: 0.9rem;
+            color: #dc3545;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-control {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                font-size: 1rem;
+                padding: 12px;
+            }
+        }
+    /* Styling for the current image */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .rounded {
+        border-radius: 10px;
+    }
+
+    .mb-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    </style>
+        
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>

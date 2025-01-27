@@ -1,0 +1,109 @@
+<!-- <% if (success) { %>
+  <div class="flash-message flash-success">
+    <%= success %>
+    <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+  </div>
+<% } %>
+
+<% if (error) { %>
+  <div class="flash-message flash-error">
+    <%= error %>
+    <button class="close-btn" onclick="this.parentElement.style.display='none'">&times;</button>
+  </div>
+<% } %>
+
+<style>
+.flash-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  width: auto;
+  max-width: 90%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  animation: fadeInOut 5s forwards, slideIn 0.5s ease-in-out forwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Success Message */
+.flash-message.flash-success {
+  background-color: #4caf50; /* Green for success */
+  color: white;
+}
+
+/* Error Message */
+.flash-message.flash-error {
+  background-color: #f44336; /* Red for error */
+  color: white;
+}
+
+/* Close Button */
+.flash-message .close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  margin-left: 15px;
+  transition: color 0.3s;
+}
+
+.flash-message .close-btn:hover {
+  color: #ddd;
+}
+
+/* Animation for Flash Messages */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  5% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Close Button Hover Effect */
+.flash-message .close-btn:hover {
+  color: #f8f9fa;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 576px) {
+  .flash-message {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  .flash-message .close-btn {
+    font-size: 18px;
+  }
+}
+</style> -->

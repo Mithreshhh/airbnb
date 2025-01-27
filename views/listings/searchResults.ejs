@@ -1,0 +1,89 @@
+<%- layout("layouts/boilerplate.ejs") %>
+
+<h2 class="text-center text-primary my-4">Search Results</h2>
+
+<% if (listings.length > 0) { %>
+  <div class="container">
+    <div class="row g-4">
+      <% listings.forEach(listing => { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card shadow-lg animate__animated animate__fadeIn border-0">
+            <!-- Listing Image -->
+            <img src="<%= listing.image.url %>" 
+                 class="card-img-top" 
+                 alt="Listing Image"
+                 style="height: 200px; object-fit: cover;">
+
+            <!-- Card Body -->
+            <div class="card-body">
+              <h5 class="card-title text-primary"><%= listing.title %></h5>
+              <p class="text-muted">
+                <strong>Owner:</strong> <span class="text-dark"><%= listing.owner.username || 'Unknown' %></span>
+              </p>
+              <p class="card-text text-muted"><%= listing.description || 'No description available.' %></p>
+              <p class="text-success h6 mt-3">Price: $<strong><%= listing.price || 'N/A' %></strong></p>
+              <p class="card-location mt-2">
+                <i class="fas fa-map-marker-alt text-danger"></i> 
+                <%= listing.location || 'Unknown Location' %>, <%= listing.country || 'N/A' %>
+              </p>
+
+              <!-- View Details Button -->
+              <div class="d-flex justify-content-center mt-4">
+                <a href="/listings/<%= listing._id %>" class="btn btn-primary btn-sm">
+                  View Details
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+<% } else { %>
+  <div class="text-center my-5">
+    <p class="text-muted">No listings found matching your search criteria.</p>
+  </div>
+<% } %>
+<style>
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.card-location {
+  font-size: 0.9rem;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+}
+
+.text-muted {
+  font-size: 0.85rem;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+}
+</style>

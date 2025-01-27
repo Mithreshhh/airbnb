@@ -1,0 +1,149 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+    <body>
+        <div class="container mt-5">
+            <h1 class="mb-4 text-center animate__animated animate__fadeIn">Create a New Listing</h1>
+            <form action="/listings" method="post" novalidate class="needs-validation shadow-lg p-4 bg-light rounded" enctype="multipart/form-data">
+                <!-- Title -->
+                <div class="mb-4">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" name="listing[title]" id="title" class="form-control form-control-lg"
+                        placeholder="Enter the listing title" required>
+                    <div class="invalid-feedback">Please enter a valid title.</div>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-4">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" id="description" class="form-control form-control-lg" rows="3"
+                        placeholder="Write a brief description" required></textarea>
+                    <div class="invalid-feedback">Please enter a description.</div>
+                </div>
+
+                <!-- Image -->
+                <div class="mb-4">
+                    <label for="image" class="form-label">Image File</label>
+                    <input type="file" name="listing[image]" id="image" class="form-control form-control-lg"
+                        placeholder="Paste an image URL">
+                    <div class="invalid-feedback">Please provide a valid image URL.</div>
+                </div>
+
+                <!-- Country -->
+                <div class="mb-4">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" name="listing[country]" id="country" class="form-control form-control-lg"
+                        placeholder="Enter the country" required>
+                    <div class="invalid-feedback">Please enter a country.</div>
+                </div>
+
+                <!-- Location -->
+                <div class="mb-4">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" name="listing[location]" id="location" class="form-control form-control-lg"
+                        placeholder="Specify the location" required>
+                    <div class="invalid-feedback">Please enter a location.</div>
+                </div>
+
+                <!-- Price -->
+                <div class="mb-4">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" name="listing[price]" id="price" class="form-control form-control-lg"
+                        placeholder="Set a price" required>
+                    <div class="invalid-feedback">Please enter a price.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 animate__animated animate__fadeIn">Add
+                    Listing</button>
+            </form>
+        </div>
+    </body>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+
+        .form-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 1px solid #ced4da;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+
+        .needs-validation {
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .invalid-feedback {
+            font-size: 0.9rem;
+            color: #dc3545;
+        }
+
+        .shadow-lg {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                var forms = document.getElementsByClassName('needs-validation');
+                Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>

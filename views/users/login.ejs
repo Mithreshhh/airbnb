@@ -1,0 +1,119 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-5 justify-content-center">
+    <h1 class="col-12 text-center mb-4">Welcome Back</h1>
+    <p class="col-12 text-center text-muted mb-4">Please log in to your account</p>
+    <div class="col-12 col-md-6">
+        <form action="/login" method="post" class="needs-validation" novalidate>
+            <!-- Username -->
+            <div class="form-group mb-4">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" class="form-control form-control-lg" placeholder="Enter your username" required>
+                <div class="invalid-feedback">Please enter your username.</div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group mb-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" class="form-control form-control-lg" placeholder="Enter your password" required>
+                <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Log In</button>
+
+            <!-- Additional Links -->
+            <div class="text-center mt-3">
+                <a href="#" class="text-muted small">Forgot password?</a>
+                <span class="mx-2">|</span>
+                <a href="/register" class="text-muted small">Sign up</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Custom styles for the form -->
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h1 {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #555;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        border: 1px solid #ced4da;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 8px;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+        box-shadow: 0 4px 12px rgba(0, 91, 187, 0.2);
+    }
+
+    .text-muted {
+        color: #6c757d !important;
+    }
+
+    .col-md-6 {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .row {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    @media (max-width: 768px) {
+        .col-md-6 {
+            padding: 20px;
+        }
+    }
+</style>
+
+<!-- Optional JavaScript for form validation -->
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>

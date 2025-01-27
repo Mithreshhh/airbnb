@@ -1,0 +1,112 @@
+<body>
+    <div class="floating-shapes" style="top: 20%; left: 30%;"></div>
+    <div class="floating-shapes" style="top: 50%; left: 70%;"></div>
+    <div class="floating-shapes" style="top: 80%; left: 50%;"></div>
+
+    <div class="container">
+        <h1>Welcome to Wanderlust!</h1>
+        <p>Explore our amazing listings and reviews. We're here to help you discover the best places to visit!</p>
+        <a href="/listings" class="btn">View Listings</a>
+    </div>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #ffffff, #f7f7f7);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 99, 132, 0.7);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            z-index: 1;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: transparent;
+            background: linear-gradient(to left, #ff6b6b, #3498db);
+            background-clip: text;
+            animation: gradient-text 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-text {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        p {
+            color: #333;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            background-color: #ffffff;
+            color: #3498db;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border: 2px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #3498db;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:active {
+            transform: scale(1);
+        }
+    </style>
+</body>
