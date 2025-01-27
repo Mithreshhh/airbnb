@@ -11,14 +11,14 @@ const upload = multer({ storage });
 const ExpressError = require("../utils/expressError"); 
 
 // Middleware to validate listing schema
-const validateListing = (req, res, next) => {
-    const { error } = listingSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(", ");
-        throw new ExpressError(400, msg); 
-    }
-    next();
-};
+// const validateListing = (req, res, next) => {
+//     const { error } = listingSchema.validate(req.body);
+//     if (error) {
+//         const msg = error.details.map(el => el.message).join(", ");
+//         throw new ExpressError(400, msg); 
+//     }
+//     next();
+// };
 
 // Static routes first
 Router.use(methodOverride("_method"));
