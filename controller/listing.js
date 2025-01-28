@@ -57,3 +57,15 @@ module.exports.updateform = async (req, res) => {
 
     }
 };
+module.exports.delete = async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Listing.findByIdAndDelete(id);
+        req.flash("success", "Listing deleted successfully");
+        res.redirect("/listings");
+    } catch (error) {
+        
+        req.flash("error", "Failed to delete the listing");
+        res.redirect("/listings");
+    }
+};
